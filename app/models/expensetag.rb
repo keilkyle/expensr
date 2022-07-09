@@ -1,0 +1,2 @@
+class Expensetag < ApplicationRecord
+end

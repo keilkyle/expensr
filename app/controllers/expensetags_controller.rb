@@ -1,0 +1,2 @@
+class ExpensetagsController < ApplicationController
+end
