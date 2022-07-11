@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import React, {useState} from 'react'
+import Navbar from './Navbar'
+import Signup from './Signup'
 import './App.css';
 
 function App() {
+ 
+  const [user, setUser] = useState(null)  
+
+  function onLogout() {
+    setUser(null)
+  }
+ 
+  if (!user) return <Signup setUser={setUser} />;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar onLogout={onLogout} user={user}/>
+    </>
   );
 }
 
