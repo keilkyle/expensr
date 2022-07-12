@@ -1,12 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import Expense from "./Expense.js"
 
-function ExpenseList ({ user }) {
-   
-  
+function ExpenseList ({expenses, setExpenses}) {
+  useEffect(() => {
+    fetch("/me")
+    .then(r => r.json())
+    .then(data => {
+      setExpenses(data)})
+    },[])
+
+
     return (
       <>
         <h1>Here's all your expenses.</h1>
-        {/* <ul>{user.expenses.map((expense) => <li>{expense.name}</li>)}</ul> */}
+        <ul>{expenses.map((expense) => <Expense key={expense.id} expense={expense} />)}</ul>
       </>
     );
   }

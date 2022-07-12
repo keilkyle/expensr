@@ -10,12 +10,21 @@ class UsersController < ApplicationController
         else
           render json: { error: user.errors.full_messages }, status: :unprocessable_entity
         end
-      end
+    end
     
-      private
+    def show
+        user = User.find_by(id: session[:user_id])
+        if user
+            render json: user.expenses, status: :created
+        else
+            render json: {error: "errorrrrrr"}, status: :unauthorized
+        end
+    end
+
+    private
     
-      def user_params
+    def user_params
         params.permit(:username, :password, :password_confirmation)
-      end
+    end
 
 end
