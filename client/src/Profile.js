@@ -1,14 +1,28 @@
 import React from 'react'
 
-function Profile({user}) {
+function Profile({user, setUser}) {
     
-    debugger
+    function deleteAccount() {
+        fetch("/user", {
+            headers: {
+                "content-type": "application/json"
+            },
+            method: "DELETE"
+        })
+        .then(r => {
+            debugger
+            if (r.ok) {
+                setUser(null);
+              }
+        })
+    }
 
     return(
-        <li>
-            <p>{user.username}</p>
+        <div>
+            <h1>{user.username}</h1>
             <p>{user.email}</p>
-        </li>
+            <button onClick={deleteAccount}>Delete Account</button>
+        </div>
     )
 }
 

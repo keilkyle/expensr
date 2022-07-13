@@ -39,7 +39,7 @@ function App() {
           <ExpenseList expenses={expenses} setExpenses={setExpenses} />    
         </Route>
         <Route path="/profile">
-          <Profile user={user}/>
+          <Profile user={user} setUser={setUser}/>
         </Route>
         <Route path="/summary">
           <Summary user={user} userexpenses={expenses} />
