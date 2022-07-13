@@ -10,7 +10,6 @@ function Profile({user, setUser}) {
             method: "DELETE"
         })
         .then(r => {
-            debugger
             if (r.ok) {
                 setUser(null);
               }
@@ -32,7 +31,6 @@ function Profile({user, setUser}) {
     })
     .then((r) => r.json())
     .then((data) => {
-        debugger
         setUser(data)
       });
   }
