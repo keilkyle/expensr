@@ -7,7 +7,8 @@ function Summary({expenses, setExpenses, user}) {
         if(!tags.includes(user.tags[tag].name)) {
             tags.push(user.tags[tag].name)
         }
-    }       
+    }    
+       
     return(
         <div>
             <h1>Purchase Categories</h1>
