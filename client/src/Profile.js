@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function Profile({user, setUser}) {
     
@@ -16,12 +16,45 @@ function Profile({user, setUser}) {
               }
         })
     }
+  const [email, setEmail] = useState(user.email);
+  const [errors, setErrors] = useState(null);
+
+  function editEmail(e) {
+    e.preventDefault();
+    fetch("/user", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email
+      }),
+    })
+    .then((r) => r.json())
+    .then((data) => {
+        debugger
+        setUser(data)
+      });
+  }
 
     return(
         <div>
             <h1>{user.username}</h1>
             <p>{user.email}</p>
-            <button onClick={deleteAccount}>Delete Account</button>
+            <h2>Edit email?</h2>
+            <form onSubmit={editEmail}>
+              <label htmlFor="email">New email address:</label>
+              <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              />
+              <button type="submit">Submit new email</button>
+          </form>
+          <p>{errors}</p>
+
+          <button onClick={deleteAccount}>Delete Account</button>
         </div>
     )
 }

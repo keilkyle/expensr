@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
   get "/me", to: "users#show"
   delete "/user", to: "users#destroy"
+  patch "/user", to: "users#update"
 
 end

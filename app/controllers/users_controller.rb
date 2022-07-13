@@ -32,10 +32,20 @@ class UsersController < ApplicationController
         end 
     end
 
+    def update
+        user = User.find_by(id: session[:user_id])
+        if user
+            user.update(user_params)
+            render json: user, status: :accepted
+        else
+            render json: {errors: "errorrrrrr"}, status: :unauthorized
+        end
+    end
+
     private
     
     def user_params
-        params.permit(:username, :password, :password_confirmation)
+        params.permit(:username, :password, :password_confirmation, :email)
     end
 
 end
