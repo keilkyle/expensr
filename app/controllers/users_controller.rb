@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     def show
         user = User.find_by(id: session[:user_id])
         if user
-            render json: user.expenses, status: :created
+            render json: user, status: :created
         else
             render json: {error: "errorrrrrr"}, status: :unauthorized
         end

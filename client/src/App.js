@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar'
 import Signup from './Signup'
+import Profile from './Profile';
+import Summary
+ from './Summary';
 import './App.css';
- 
+ import { Switch, Route } from "react-router-dom";
+
 import NewExpense from './NewExpense';
 import ExpenseList from './ExpenseList';
 
@@ -24,14 +28,23 @@ function App() {
     });
   }, []);
   
-
   if (!user) return <Signup setUser={setUser} />;
 
   return (
     <>
       <Navbar onLogout={onLogout} user={user}/>
-      <NewExpense user={user} expenses={expenses} setExpenses={setExpenses} />        
-      <ExpenseList expenses={expenses} setExpenses={setExpenses} />    
+      <Switch>
+        <Route exact path="/">
+          <NewExpense user={user} expenses={expenses} setExpenses={setExpenses} />        
+          <ExpenseList expenses={expenses} setExpenses={setExpenses} />    
+        </Route>
+        <Route path="/profile">
+          <Profile user={user}/>
+        </Route>
+        <Route path="/summary">
+          <Summary user={user} userexpenses={expenses} />
+        </Route>
+      </Switch>
     </>
   );
 }

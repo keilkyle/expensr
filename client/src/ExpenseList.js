@@ -2,13 +2,13 @@ import React, {useEffect} from 'react'
 import Expense from "./Expense.js"
 
 function ExpenseList ({expenses, setExpenses}) {
+  
   useEffect(() => {
     fetch("/me")
     .then(r => r.json())
     .then(data => {
-      setExpenses(data)})
+      setExpenses(data.expenses)})
     },[])
-
 
     return (
       <>
