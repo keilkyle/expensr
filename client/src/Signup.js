@@ -33,7 +33,6 @@ function SignUp({ setUser }) {
             r.json().then((user) => setUser(user));
           } else {
             r.json().then((err) => {
-                debugger
                 setErrors(err.error)});
           } 
         });

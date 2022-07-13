@@ -13,7 +13,7 @@ function ExpenseList ({expenses, setExpenses}) {
     return (
       <>
         <h1>Here's all your expenses.</h1>
-        <ul>{expenses.map((expense) => <Expense key={expense.id} expense={expense} />)}</ul>
+        <div>{expenses.map((expense) => <Expense key={expense.id} expense={expense} />)}</div>
       </>
     );
   }

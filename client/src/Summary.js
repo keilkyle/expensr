@@ -8,13 +8,10 @@ function Summary({expenses, setExpenses, user}) {
             tags.push(user.tags[tag].name)
         }
     }       
-
-    debugger 
-
     return(
         <div>
-            <strong>Purchase Categories</strong>
-            {tags.map((tag) => <p key={tag}>{tag}</p>)}
+            <h1>Purchase Categories</h1>
+            {tags.map((tag) => <h2 key={tag}>{tag}</h2>)}
         </div>
     )
 }

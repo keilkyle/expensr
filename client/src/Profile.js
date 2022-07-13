@@ -37,8 +37,8 @@ function Profile({user, setUser}) {
 
     return(
         <div>
-            <h1>{user.username}</h1>
-            <p>{user.email}</p>
+            <h1>Profile for {user.username}</h1>
+            <p>Your current email: {user.email}</p>
             <h2>Edit email?</h2>
             <form onSubmit={editEmail}>
               <label htmlFor="email">New email address:</label>
